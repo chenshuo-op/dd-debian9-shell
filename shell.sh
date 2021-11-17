@@ -44,20 +44,34 @@ install_ipv6(){
 	1)
 	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-la.sh"
 	bash /usr/bin/vir-la.sh
-	sleep 3
-	start_menu
+        read -p "需重启后ipv6才能生效，是否现在重启 ? [Y/n] :" yn
+	[ -z "${yn}" ] && yn="y"
+	if [[ $yn == [Yy] ]]; then
+		echo -e "VPS 重启中..."
+		reboot
+	else
+	    sleep 1s
+	    install
+	fi
 	;;
 	2)
 	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-sj.sh"
 	bash /usr/bin/vir-sj.sh
-	sleep 3
-	start_menu
+        read -p "需重启后ipv6才能生效，是否现在重启 ? [Y/n] :" yn
+	[ -z "${yn}" ] && yn="y"
+	if [[ $yn == [Yy] ]]; then
+		echo -e "VPS 重启中..."
+		reboot
+	else
+	    sleep 1s
+	    install
+	fi
 	;;
 	*)
 	clear
 	echo -e "${Error}:请输入正确数字 [0-2]"
-	sleep 3s
-	start_menu
+	sleep 2
+	install
 	;;
    esac
 }
