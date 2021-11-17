@@ -34,12 +34,41 @@ check_version(){
 	fi
 }
 
+#安装virmach的ipv6
+install_ipv6(){
+        echo "请选择添加ipv6的vps"
+        echo "1: virmach 洛杉矶I"
+        echo "2: virmach 圣何塞"
+	read -p " 请输入数字 :" num
+  case "$num" in
+	1)
+	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-la.sh"
+	bash /usr/bin/vir-la.sh
+	sleep 3
+	start_menu
+	;;
+	2)
+	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-sj.sh"
+	bash /usr/bin/vir-sj.sh
+	sleep 3
+	start_menu
+	;;
+	*)
+	clear
+	echo -e "${Error}:请输入正确数字 [0-2]"
+	sleep 3s
+	start_menu
+	;;
+   esac
+}
+
 install(){
         echo "————————————此脚本只运行于debian9————————————"
         echo "1: 安装锐速内核"
         echo "2: 使用锐速加速"
         echo "3: 安装v2ray和xray"
-	echo "4: 退出脚本"
+	echo "4: 安装ipv6"
+	echo "5: 退出脚本"
 	read -p " 请输入数字 :" num
   case "$num" in
 	1)
@@ -68,6 +97,9 @@ maxmode=\"1\"">>/appex/etc/config
 	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
 	;;
 	4)
+	install_ipv6
+	;;
+	5)
 	exit 1
 	;;
 	*)
