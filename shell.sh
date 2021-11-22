@@ -86,7 +86,7 @@ install(){
 	read -p " 请输入数字 :" num
   case "$num" in
 	1)
-	bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/chenshuo-dr/dd-debian9-install/master//Debian_Kernel.sh')
+	bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/chenshuo-dr/dd-debian9-shell/master//Debian_Kernel.sh')
 	read -p "需要重启VPS后，才能使用锐速，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
@@ -119,7 +119,7 @@ maxmode=\"1\"">>/appex/etc/config
 	*)
 	clear
 	echo -e "输入错误！请输入正确数字 [0-4]"
-	sleep 1s
+	sleep 2s
 	install
 	;;
    esac
