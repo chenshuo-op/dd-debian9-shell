@@ -42,7 +42,7 @@ install_ipv6(){
 	read -p " 请输入数字 :" num
   case "$num" in
 	1)
-	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-la.sh"
+	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/vir-ipv6/main/vir-la.sh"
 	bash /usr/bin/vir-la.sh
         read -p "需重启后ipv6才能生效，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
@@ -55,7 +55,7 @@ install_ipv6(){
 	fi
 	;;
 	2)
-	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/vir-ipv6/main/vir-sj.sh"
+	wget -N -P /usr/bin --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/vir-ipv6/main/vir-sj.sh"
 	bash /usr/bin/vir-sj.sh
         read -p "需重启后ipv6才能生效，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
