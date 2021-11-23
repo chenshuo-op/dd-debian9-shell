@@ -78,14 +78,17 @@ install_ipv6(){
 
 install(){
         echo "————————————此脚本只运行于debian9————————————"
-        echo "1: 安装锐速内核"
-        echo "2: 使用锐速加速"
-        echo "3: 安装v2ray和xray"
-	echo "4: 安装ipv6"
+	echo "1: 安装ipv6"
+        echo "2: 安装锐速内核"
+        echo "3: 使用锐速加速"
+        echo "4: 安装v2ray和xray"
 	echo "5: 退出脚本"
 	read -p " 请输入数字 :" num
   case "$num" in
 	1)
+	install_ipv6
+	;;
+	2)
 	bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/chenshuo-dr/dd-debian9-shell/master//Debian_Kernel.sh')
 	read -p "需要重启VPS后，才能使用锐速，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
@@ -97,7 +100,7 @@ install(){
 	    install
 	fi
 	;;
-	2)
+	3)
 	bash <(wget --no-check-certificate -qO- https://github.com/chenshuo-as/LotServer_Vicer/raw/master/Install.sh) install
 	sed -i '/advinacc/d' /appex/etc/config
 	sed -i '/maxmode/d' /appex/etc/config
@@ -107,11 +110,8 @@ maxmode=\"1\"">>/appex/etc/config
 	sleep 1s
 	install
 	;;
-	3)
-	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
-	;;
 	4)
-	install_ipv6
+	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
 	;;
 	5)
 	exit 1
