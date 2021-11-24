@@ -86,7 +86,8 @@ install(){
 	read -p " 请输入数字 :" num
   case "$num" in
 	1)
-	bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/chenshuo-dr/dd-debian9-shell/master//Debian_Kernel.sh')
+	echo " ---> 正在安装锐速内核，请稍后...."
+	bash <(wget --no-check-certificate -qO- 'https://raw.githubusercontent.com/chenshuo-op/dd-debian9-shell/master//Debian_Kernel.sh')
 	read -p "需要重启VPS后，才能使用锐速，是否现在重启 ? [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
@@ -98,20 +99,22 @@ install(){
 	fi
 	;;
 	2)
-	bash <(wget --no-check-certificate -qO- https://github.com/chenshuo-as/LotServer_Vicer/raw/master/Install.sh) install
+	echo " ---> 正在安装锐速加速...."
+	bash <(wget --no-check-certificate -qO- https://github.com/chenshuo-dr/LotServer_Vicer/raw/master/Install.sh) install
 	sed -i '/advinacc/d' /appex/etc/config
 	sed -i '/maxmode/d' /appex/etc/config
 	echo -e "advinacc=\"1\"
 maxmode=\"1\"">>/appex/etc/config
 	/appex/bin/lotServer.sh restart
-	sleep 1s
+	echo "锐速安装成功!"
+	sleep 2s
 	install
 	;;
 	3)
 	install_ipv6
 	;;
 	4)
-	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
+	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-op/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
 	;;
 	5)
 	exit 1
