@@ -86,9 +86,9 @@ while true; do
         sed -i 's/linux-check-removal/#linux-check-removal/' "/var/lib/dpkg/info/${kernel}.prerm"
         sed -i 's/uname -r/echo purge/' "/var/lib/dpkg/info/${kernel}.prerm"
       fi
-      dpkg --force-depends --purge "$kernel"
+      dpkg --force-depends --purge "$kernel" >/dev/null 2>&1
     done
   done
-apt-get autoremove -y
-[ -d '/var/lib/apt/lists' ] && find /var/lib/apt/lists -type f -delete
+apt-get autoremove -y >/dev/null 2>&1
+[ -d '/var/lib/apt/lists' ] && find /var/lib/apt/lists -type f -delete >/dev/null 2>&1
 
