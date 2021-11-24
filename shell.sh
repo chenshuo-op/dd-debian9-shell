@@ -105,7 +105,7 @@ install(){
 	sed -i '/maxmode/d' /appex/etc/config
 	echo -e "advinacc=\"1\"
 maxmode=\"1\"">>/appex/etc/config
-	/appex/bin/lotServer.sh restart
+	/appex/bin/lotServer.sh restart >/dev/null 2>&1
 	echo "锐速安装成功!"
 	sleep 2s
 	install
