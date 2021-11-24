@@ -111,7 +111,7 @@ maxmode=\"1\"">>/appex/etc/config
 	install_ipv6
 	;;
 	4)
-	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-dr/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
+	wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/chenshuo-as/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh
 	;;
 	5)
 	exit 1
